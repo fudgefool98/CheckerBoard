@@ -15,46 +15,44 @@ import javafx.scene.shape.Rectangle;
  * @author Jordan
  */
 public class Board {
-    
-    double width;
-    double height;
-    int rows;
-    int columns;
-    public Color lightColor = Color.RED;
-    public Color darkColor = Color.BLACK;
+    private double width;
+    private double height;
+    int numRows;
+    int numColumns;
+    private Color lightColor = Color.RED;
+    private Color darkColor = Color.BLACK;
     double rectWidth;
     double rectHeight;
-    public AnchorPane anchorPane;
+    private AnchorPane anchorPane;
     
     public Board(int numRows, int numCols, double boardWidth, double boardHeight){
-        this.rows = numRows;
-        this.columns = numCols;
-       
+        this.numRows = numRows;
+        this.numColumns = numCols;
+        
+        this.width = boardWidth;
+        this.height = boardHeight;
         anchorPane = new AnchorPane();
     }
     public Board(int numRows, int numCols, double boardWidth, double boardHeight, Color lightColor, Color darkColor){
-        this.rows = numRows;
-        this.columns = numCols;
+        this.numRows = numRows;
+        this.numColumns = numCols;
         this.lightColor = lightColor;
         this.darkColor = darkColor;
        
         anchorPane = new AnchorPane();
     }
     
-    public AnchorPane build(double width, double height) {
+    public AnchorPane build() {
         clear();
-        this.width = width;
-        this.height = height;
-        rectWidth = Math.ceil(width / (double)columns);
-        rectHeight = Math.ceil(height / (double)rows);       
         anchorPane.setPrefWidth(width);
         anchorPane.setPrefHeight(height);
+        rectWidth = Math.ceil(anchorPane.getWidth() / (double)numColumns);
+        rectHeight = Math.ceil(anchorPane.getHeight() / (double)numRows);       
         
-        System.out.println(rectWidth +" "+ rectHeight);
-        
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < columns; col++) {
-                Rectangle rect = new Rectangle(rectWidth*row,rectHeight*col,rectWidth, rectHeight);                
+              
+        for (int row = 0; row < numRows; row++) {
+            for (int col = 0; col < numColumns; col++) {
+                Rectangle rect = new Rectangle((double)numColumns*rectWidth,(double)numRows*rectHeight,rectWidth, rectHeight);                
                     if ( (col+row) % 2 == 0 ) {
                             rect.setFill(lightColor);
                         } 

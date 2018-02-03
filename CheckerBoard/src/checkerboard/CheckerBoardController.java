@@ -12,7 +12,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -56,8 +55,8 @@ public class CheckerBoardController implements Initializable, Startable {
 
     @FXML
     private void handle16(ActionEvent event) {
-        board.rows = 16;
-        board.columns = 16;
+        board.numRows = 16;
+        board.numColumns = 16;
         numRows = 16;
         numCols = 16;
         refresh();
@@ -65,8 +64,8 @@ public class CheckerBoardController implements Initializable, Startable {
     
     @FXML
     private void handle10(ActionEvent event) {
-        board.rows = 10;
-        board.columns = 10;
+        board.numRows = 10;
+        board.numColumns = 10;
         numRows = 10;
         numCols = 10;
         refresh();
@@ -74,8 +73,8 @@ public class CheckerBoardController implements Initializable, Startable {
     
     @FXML
     private void handle8(ActionEvent event) {
-        board.rows = 8;
-        board.columns = 8;
+        board.numRows = 8;
+        board.numColumns = 8;
         numRows = 8;
         numCols = 8;
         refresh();    
@@ -83,8 +82,8 @@ public class CheckerBoardController implements Initializable, Startable {
     
     @FXML
     private void handle3(ActionEvent event) {
-        board.rows = 3;
-        board.columns = 3;
+        board.numRows = 3;
+        board.numColumns = 3;
         numRows = 3;
         numCols = 3;
         refresh();    
@@ -103,7 +102,9 @@ public class CheckerBoardController implements Initializable, Startable {
     
     private void refresh() {
         vBox.getChildren().remove(1);
-        vBox.getChildren().add(board.build(stage.getWidth(),stage.getHeight()));
+        
+        System.out.println("width = "+ stage.getWidth() +  " height = "+ stage.getHeight());
+        vBox.getChildren().add(board.build());
         
         // vbox.getchildren.add(anchorPane)
         //remove existing anchorpane and replace with new each time.
