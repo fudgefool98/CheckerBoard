@@ -10,7 +10,7 @@
    <children>
       <VBox fx:id="vBox" maxWidth="400.0" prefHeight="425.0">
          <children>
-            <MenuBar prefHeight="25.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+            <MenuBar maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
                <menus>
                   <Menu mnemonicParsing="false" text="Grid">
                      <items>

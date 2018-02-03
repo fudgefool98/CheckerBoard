@@ -20,8 +20,8 @@ public class Board {
     double height;
     int rows;
     int columns;
-    Color lightColor = Color.RED;
-    Color darkColor = Color.BLACK;
+    public Color lightColor = Color.RED;
+    public Color darkColor = Color.BLACK;
     double rectWidth;
     double rectHeight;
     public AnchorPane anchorPane;
@@ -41,7 +41,7 @@ public class Board {
         anchorPane = new AnchorPane();
     }
     
-    public void build(double width, double height) {
+    public AnchorPane build(double width, double height) {
         clear();
         this.width = width;
         this.height = height;
@@ -63,7 +63,8 @@ public class Board {
                         }                                                   
                 anchorPane.getChildren().add(rect);                
             }
-        }      
+        }  
+        return anchorPane;
     }
     
     public void clear() {

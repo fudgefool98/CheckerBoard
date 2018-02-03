@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -29,9 +30,9 @@ public class CheckerBoardController implements Initializable, Startable {
     protected Color lightColor;
     protected Color darkColor;
     
+         
     @FXML
-    AnchorPane anchorPane;
-       
+    VBox vBox = new VBox();
     public Board board;
     
     @Override
@@ -55,6 +56,8 @@ public class CheckerBoardController implements Initializable, Startable {
 
     @FXML
     private void handle16(ActionEvent event) {
+        board.rows = 16;
+        board.columns = 16;
         numRows = 16;
         numCols = 16;
         refresh();
@@ -62,6 +65,8 @@ public class CheckerBoardController implements Initializable, Startable {
     
     @FXML
     private void handle10(ActionEvent event) {
+        board.rows = 10;
+        board.columns = 10;
         numRows = 10;
         numCols = 10;
         refresh();
@@ -69,6 +74,8 @@ public class CheckerBoardController implements Initializable, Startable {
     
     @FXML
     private void handle8(ActionEvent event) {
+        board.rows = 8;
+        board.columns = 8;
         numRows = 8;
         numCols = 8;
         refresh();    
@@ -76,6 +83,8 @@ public class CheckerBoardController implements Initializable, Startable {
     
     @FXML
     private void handle3(ActionEvent event) {
+        board.rows = 3;
+        board.columns = 3;
         numRows = 3;
         numCols = 3;
         refresh();    
@@ -93,7 +102,10 @@ public class CheckerBoardController implements Initializable, Startable {
     }
     
     private void refresh() {
-        board.build(stage.getWidth(),stage.getHeight());
-        anchorPane = board.getBoard();
+        vBox.getChildren().remove(1);
+        vBox.getChildren().add(board.build(stage.getWidth(),stage.getHeight()));
+        
+        // vbox.getchildren.add(anchorPane)
+        //remove existing anchorpane and replace with new each time.
     }    
 }
